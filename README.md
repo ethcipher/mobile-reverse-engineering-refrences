@@ -16,22 +16,22 @@ emulator -avd Pixel_3_XL_API_30 -writable-system -selinux permissive
 
 | Command | What it does / notes |
 | --- | --- |
-| ```<br>adb devices<br>``` | List attached devices/emulators. Use to confirm the device is visible. |
-| ```<br>adb root<br>``` | Restart adb daemon as root (works on emulator and some rooted devices). If it fails, device isn't allowing adb root. |
-| ```<br>adb remount<br>``` | Remounts /system as read-write when possible. Commonly used after `adb root`. Equivalent to mounting system RW so you can push files to /system. |
-| ```<br>adb push local.file /remote/path<br>``` | Copy a file from host to device. Example: push a system CA into `/system/etc/security/cacerts/`. |
-| ```<br>adb pull /remote/path local.file<br>``` | Copy a file from device to host. |
-| ```<br>adb shell<br>``` | Start an interactive shell on the device. Good for running `ls, ps, getprop`, etc. |
-| ```<br>adb shell <command><br>``` | Run a single command on device without an interactive shell, e.g. `adb shell ls /system`. |
-| ```<br>adb install app.apk<br>``` | Install an APK to the device (non-root path). Use `-r` to replace, `-g` to grant permissions. |
-| ```<br>adb uninstall com.example.app<br>``` | Uninstall an app by package name. |
-| ```<br>adb logcat<br>``` | Show device logs. Great for debugging crashes, log output, Frida/Logger noise. Use filters: `adb logcat -s MyTag:D`. |
-| ```<br>adb tcpip 5555<br>adb connect <device-ip>:5555<br>``` | Restart ADB daemon listening on TCP (useful for networked devices). Be mindful of network security. |
-| ```<br>adb forward tcp:9222 localabstract:chrome_devtools_remote<br>``` | Forward local host port to device socket (useful for chrome remote debugging and some app sockets). |
-| ```<br>adb shell pm list packages<br>adb shell pm path com.example.app<br>adb shell pm dump com.example.app<br>``` | Package manager queries: list packages, get APK path, dump package info. |
-| ```<br>adb shell am start -n com.example/.MainActivity<br>``` | Start an activity (launch an app component) via Activity Manager. |
-| ```<br>adb bugreport > bugreport.zip<br>``` | Collect a device bug report—very useful to inspect system state. Large and detailed. |
-| ```<br>adb shell getprop ro.build.version.release<br>adb shell getprop ro.build.version.sdk<br>``` | Query Android version and SDK level. |
+| ```adb devices``` | List attached devices/emulators. Use to confirm the device is visible. |
+| ```adb root``` | Restart adb daemon as root (works on emulator and some rooted devices). If it fails, device isn't allowing adb root. |
+| ```adb remount``` | Remounts /system as read-write when possible. Commonly used after `adb root`. Equivalent to mounting system RW so you can push files to /system. |
+| ```adb push local.file /remote/path``` | Copy a file from host to device. Example: push a system CA into `/system/etc/security/cacerts/`. |
+| ```adb pull /remote/path local.file``` | Copy a file from device to host. |
+| ```adb shell``` | Start an interactive shell on the device. Good for running `ls, ps, getprop`, etc. |
+| ```adb shell <command>``` | Run a single command on device without an interactive shell, e.g. `adb shell ls /system`. |
+| ```adb install app.apk``` | Install an APK to the device (non-root path). Use `-r` to replace, `-g` to grant permissions. |
+| ```adb uninstall com.example.app``` | Uninstall an app by package name. |
+| ```adb logcat``` | Show device logs. Great for debugging crashes, log output, Frida/Logger noise. Use filters: `adb logcat -s MyTag:D`. |
+| ```adb tcpip 5555adb connect <device-ip>:5555``` | Restart ADB daemon listening on TCP (useful for networked devices). Be mindful of network security. |
+| ```adb forward tcp:9222 localabstract:chrome_devtools_remote``` | Forward local host port to device socket (useful for chrome remote debugging and some app sockets). |
+| ```adb shell pm list packagesadb shell pm path com.example.appadb shell pm dump com.example.app``` | Package manager queries: list packages, get APK path, dump package info. |
+| ```adb shell am start -n com.example/.MainActivity``` | Start an activity (launch an app component) via Activity Manager. |
+| ```adb bugreport > bugreport.zip``` | Collect a device bug report—very useful to inspect system state. Large and detailed. |
+| ```adb shell getprop ro.build.version.releaseadb shell getprop ro.build.version.sdk``` | Query Android version and SDK level. |
 
 ## 3) Installing Burp's CA as a _system_ certificate (step-by-step)
 
